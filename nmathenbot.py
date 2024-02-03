@@ -5,7 +5,7 @@ from pytube import YouTube, Playlist
 import os
 from moviepy.editor import *
 from pydub import *
-
+from dotenv import load_dotenv
 
 def start_command(update, context):
     update.message.reply_text("Hello! Welcome to my new bot!\nThis bot can download youtube videos(less than 7 minutes).\nSend the link of the video or a playlist you want to download, the bot bot will download it for you.\nCheck /help for more details")
@@ -126,9 +126,9 @@ def error(update, context):
 
 
 if __name__ == '__main__':
-
-    token = "6178771855:AAGV7-2aunXyEviljqztekm3crRz7HGiOoU"
-    updater = Updater(token, use_context=True)
+    load_dotenv()
+    TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+    updater = Updater(TELEGRAM_BOT_TOKEN, use_context=True)
     dp = updater.dispatcher
 
     #Commands
